@@ -10,6 +10,7 @@
 #import "NUIGraphics.h"
 #import "NUISettings.h"
 #import "NUIUtilities.h"
+#import "NUIRenderer.h"
 
 @interface NUISegmentedControlRenderer : NSObject
 

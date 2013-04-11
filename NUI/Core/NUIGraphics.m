@@ -66,7 +66,7 @@
     } else {
         image = [image resizableImageWithCapInsets:insets];
     }
-
+    
     
     return image;
 }
@@ -157,7 +157,7 @@
     CIFilter *monochromeFilter = [CIFilter filterWithName:@"CIColorMonochrome"];
     CIImage *baseImage = image;
     
-    [monochromeFilter setValue:baseImage forKey:@"inputImage"];        
+    [monochromeFilter setValue:baseImage forKey:@"inputImage"];
     [monochromeFilter setValue:[CIColor colorWithRed:0.75 green:0.75 blue:0.75] forKey:@"inputColor"];
     [monochromeFilter setValue:[NSNumber numberWithFloat:1.0] forKey:@"inputIntensity"];
     
@@ -186,6 +186,13 @@
 
 + (CAGradientLayer*)gradientLayerWithTop:(id)topColor bottom:(id)bottomColor frame:(CGRect)frame
 {
+    [self gradientLayerWithTop:topColor
+                        bottom:bottomColor
+                         frame:frame
+                  cornerRadius:0];
+}
++ (CAGradientLayer*)gradientLayerWithTop:(id)topColor bottom:(id)bottomColor frame:(CGRect)frame cornerRadius:(float)cornerRadius
+{
     CAGradientLayer *layer = [CAGradientLayer layer];
     layer.frame = frame;
     layer.colors = [NSArray arrayWithObjects:
@@ -193,6 +200,7 @@
                     (id)[bottomColor CGColor], nil];
     layer.startPoint = CGPointMake(0.5f, 0.0f);
     layer.endPoint = CGPointMake(0.5f, 1.0f);
+    layer.cornerRadius = cornerRadius;
     return layer;
 }
 

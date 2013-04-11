@@ -21,6 +21,7 @@
 + (CIImage*)tintCIImage:(CIImage*)image withColor:(CIColor*)color;
 + (UIImage*)colorImage:(UIColor*)color withFrame:(CGRect)frame;
 + (CAGradientLayer*)gradientLayerWithTop:(id)topColor bottom:(id)bottomColor frame:(CGRect)frame;
++ (CAGradientLayer*)gradientLayerWithTop:(id)topColor bottom:(id)bottomColor frame:(CGRect)frame cornerRadius:(float)cornerRadius;
 + (UIImage*)gradientImageWithTop:(id)topColor bottom:(id)bottomColor frame:(CGRect)frame;
 
 @end
