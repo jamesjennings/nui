@@ -28,7 +28,22 @@
         // UILabels created programmatically have a white background by default
         label.backgroundColor = [UIColor clearColor];
     }
-
+    
+    // Set background gradient
+    if ([NUISettings hasProperty:@"background-color-top" withClass:className]) {
+        
+        CAGradientLayer *gradientLayer = [NUIGraphics
+                                          gradientLayerWithTop:[NUISettings getColor:@"background-color-top" withClass:className]
+                                          bottom:[NUISettings getColor:@"background-color-bottom" withClass:className]
+                                          frame:label.bounds
+                                          cornerRadius:[NUISettings getFloat:@"corner-radius" withClass:className]];
+        
+        
+        UIImage *gradientImage = [NUIGraphics roundedRectImageWithClass:className layer:gradientLayer];
+        
+        label.backgroundColor = [UIColor colorWithPatternImage:gradientImage];
+    }
+    
     [NUIViewRenderer renderSize:label withClass:className];
     [NUIViewRenderer renderBorder:label withClass:className];
     [NUIViewRenderer renderShadow:label withClass:className];

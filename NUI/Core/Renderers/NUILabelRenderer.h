@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import <QuartzCore/QuartzCore.h>
 #import "NUISettings.h"
+#import "NUIGraphics.h"
 
 @interface NUILabelRenderer : NSObject
 
